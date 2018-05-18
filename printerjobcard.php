@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    
+    include_once('dbconnect.php');
+    $con = dbconn();
+    $makelist = "select * from view_all_makes";
+    $engineerlist = "select * from view_all_engineers";
+    
+    $newdocno = "select DOCNO+1 as DOCNO from view_all_docnums;";
+    $result = mysqli_query($con,$newdocno);
+    if ($result !== false) {
+        $value = mysqli_fetch_object($result);
+    }
+    else {$value = 0;}
+    $DOCNO = $value->DOCNO;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +41,7 @@
     </div>
     <ul class="nav navbar-nav">
     <div class="col-12 text-center text-black-50">
-        <h1 class="tada animated">PRINTER JOB CARD</h1>
+        <h1 class="tada animated">NEW JOB CARD</h1>
     </div>
     </ul>
   </div>
@@ -39,11 +56,29 @@
 </div>
 <div class="row">
     <div class="col-lg-4">
-            <input type="number" class="form-control" id="JobNo" name="JobNo" aria-label="JobNo" placeholder="Job No..." autofocus required>
+            <?php //echo var_dump($value);?>
+            <input type="number" class="form-control" value="<?php echo $DOCNO;?>" id="JobNo" name="JobNo" aria-label="JobNo" placeholder="Job No..." readonly required>
             <input type="text" class="form-control" id="Epicor" name="Epicor" aria-label="Epicor" placeholder="Epicor Reference...">
             <input type="text" class="form-control" id="tDate" name="tDate" aria-label="tDate" placeholder="Date..." required>
             <input type="text" class="form-control" id="tTime" name="tTime" aria-label="tTime" placeholder="Time..." required>
-            <input type="text" class="form-control" id="Make" name="Make" aria-label="Make" placeholder="Make..." >
+            <!-- <input type="text" class="form-control" id="Make" name="Make" aria-label="Make" placeholder="Make..." > -->
+            <select class="form-control" id="selectMake">
+                <option value="" selected disabled>Choose Make...</option>
+                <?php 
+                    if ($stmt = $con->prepare($makelist)) {
+                        $stmt->execute();
+                        $stmt->bind_result($ID, $NAME, $EMPID);
+                        while ($stmt->fetch()) {
+                            //printf("%s, %s\n", $field1, $field2);
+                                                   
+                ?>
+                    <option id=<?php echo $ID ?>><?php echo $NAME ?></option>
+                <?php 
+                    }
+                        $stmt->close();
+                    } 
+                ?>
+            </select>
             <input type="text" class="form-control" id="Model" name="Model" aria-label="Model" placeholder="Model..." >
             <input type="text" class="form-control" id="SerialNo" name="SerialNo" aria-label="SerialNo" placeholder="Serial#..." required>
     </div>
@@ -65,7 +100,23 @@
         </form>
     </div>
     <div class="col-lg-4">
-            <input type="text" class="form-control" id="Engineer" name="Engineer" aria-label="Engineer" placeholder="Engineer...">
+    <select class="form-control" id="selectEngineer">
+                <option value="" selected disabled>Assign Engineer...</option>
+                <?php 
+                    if ($stmt = $con->prepare($engineerlist)) {
+                        $stmt->execute();
+                        $stmt->bind_result($ID, $NAME, $EMPID);
+                        while ($stmt->fetch()) {
+                            //printf("%s, %s\n", $field1, $field2);
+                                                   
+                ?>
+                    <option id=<?php echo $ID ?>><?php echo $NAME ?></option>
+                <?php 
+                    }
+                        $stmt->close();
+                    } 
+                ?>
+            </select>
             <textarea class="form-control" rows="5" name="Problem" id="Problem" placeholder="Problem..."></textarea>
             <textarea class="form-control" rows="5" name="Remarks" id="Remarks" placeholder="Remarks..."></textarea>
     </div>

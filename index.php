@@ -47,7 +47,7 @@
     </div>
     <div class="col-lg-4">
 
-    </div>
+    </d>
   </div>
 </div>
 
