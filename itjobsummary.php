@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
 
-    <title>Charts.js</title>
+    <title>IT Service Calls Summary</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -62,16 +62,16 @@
             <canvas id="GlennChart2" width="150" height="150"></canvas>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart3" width="150" height="150"></canvas>Engineer 3
+            <canvas id="chromisChart3" width="150" height="150"></canvas>Vijith
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart4" width="100" height="100"></canvas> Engineer 4
+            <canvas id="chromisChart4" width="150" height="150"></canvas>Shijo
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart5" width="100" height="100"></canvas> Engineer 5
+            <canvas id="chromisChart5" width="150" height="150"></canvas>Unknown
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart6" width="100" height="100"></canvas> Engineer 6
+            <canvas id="chromisChart6" width="150" height="150"></canvas>Unknown
         </div>
     </div> <!-- Row 2 -->
 
@@ -194,7 +194,6 @@ if ($stmt = $con->prepare($YearMonthChart)) {
     data: <?php echo json_encode($oJobs);?>,
     }]
     },
-
     // Configuration options go here
     options: {}
     });

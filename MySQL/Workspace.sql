@@ -9,6 +9,7 @@ select * from view_all_makes;
 select * from view_all_docnums;
 select * from view_yearly_jobcards_glenn;
 select * from view_yearly_jobcards_geo;
+select * from view_all_jobcards_monthyear;
 
 --select DOCNO+1 from view_all_docnums;
 
