@@ -45,19 +45,19 @@
                 <br>
         </a> -->
         <a href="./itjobsummary.php" class="btn btn-sq-splg btn-primary">
-                <i class="fa fa-address-card fa-5x"></i><br/>
+                <i class="fa fa-line-chart fa-5x"></i><br/>
                     IT Jobs Summary
         </a>
-        <a href="./geo.php" class="btn btn-sq-splg btn-primary">
-                <i class="fa fa-address-card fa-5x"></i><br/>
+        <a href="./geo.php" class="btn btn-sq-splg btn-success">
+                <i class="fa fa-bar-chart fa-5x"></i><br/>
                     Engineer : Geo
         </a>
-        <a href="./vijith.php" class="btn btn-sq-splg btn-primary">
-                <i class="fa fa-address-card fa-5x"></i><br/>
+        <a href="./vijith.php" class="btn btn-sq-splg btn-danger">
+                <i class="fa fa-bar-chart fa-5x"></i><br/>
                     Engineer : Vijith
         </a>
-        <a href="./glenn.php" class="btn btn-sq-splg btn-primary">
-                <i class="fa fa-address-card fa-5x"></i><br/>
+        <a href="./glenn.php" class="btn btn-sq-splg btn-secondary">
+                <i class="fa fa-bar-chart fa-5x"></i><br/>
                     Engineer : Glenn
         </a>
     </div>
