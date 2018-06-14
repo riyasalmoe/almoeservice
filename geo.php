@@ -122,7 +122,13 @@
             },
 
             // Configuration options go here
-            options: {}
+            options: {scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }}
         });
 </script>
 
@@ -162,7 +168,13 @@ if ($stmt = $con->prepare($YearMonthChart)) {
     }]
     },
     // Configuration options go here
-    options: {}
+    options: {scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }}
     });
 </script>
 
@@ -201,7 +213,13 @@ if ($stmt = $con->prepare($DailyChartCurrMonth)) {
     }]
     },
     // Configuration options go here
-    options: {}
+    options: {scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }}
     });
 </script>
 <?php //Geo daily Chart current year all months
@@ -239,7 +257,13 @@ if ($stmt = $con->prepare($DailyChartCurrYear)) {
     }]
     },
     // Configuration options go here
-    options: {}
+    options: {scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }}
     });
 </script>
 

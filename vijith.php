@@ -1,10 +1,10 @@
 <?php
     include_once('dbconnect.php');
     $con = dbconn();
-    $GlennReport = "select * from view_yearly_jobcards_glenn";
-    $YearMonthChart = "select * from view_all_jobcards_glenn_monthyear";
-    $DailyChartCurrMonth = "select * from view_all_jobcards_glenn_daily_currentmonth";
-    $DailyChartCurrYear = "select * from view_all_jobcards_glenn_daily_curryear";
+    $VijithReport = "select * from view_yearly_jobcards_vijith";
+    $YearMonthChart = "select * from view_all_jobcards_vijith_monthyear";
+    $DailyChartCurrMonth = "select * from view_all_jobcards_vijith_daily_currentmonth";
+    $DailyChartCurrYear = "select * from view_all_jobcards_vijith_daily_curryear";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
 
-    <title>Glenn Service Calls Summary</title>
+    <title>Vijith Service Calls Summary</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,7 +34,7 @@
     </div>
     <ul class="nav navbar-nav">
     <div class="col-12 text-center text-black-50">
-        <h1 class="tada animated">Glenn Service Calls Summary</h1>
+        <h1 class="tada animated">Vijith Service Calls Summary</h1>
     </div>
     </ul>
   </div>
@@ -45,11 +45,11 @@
     <div class="row"> <!-- Row 1 -->
         
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-            <canvas id="GlennChartYearly" width="75" height="40"></canvas>
+            <canvas id="VijithChartYearly" width="75" height="40"></canvas>
         </div>
 
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-center">
-            <canvas id="GlennChartMonthly" width="150" height="40"></canvas>
+            <canvas id="VijithChartMonthly" width="150" height="40"></canvas>
         </div>
 
     <!--     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">   
@@ -63,7 +63,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <canvas id="GlennChartDailyCurrMonth" width="150" height="20"></canvas>
+            <canvas id="VijithChartDailyCurrMonth" width="150" height="20"></canvas>
         </div>
 
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">   
@@ -76,7 +76,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <canvas id="GlennChartDailyCurrYear" width="150" height="20"></canvas>
+            <canvas id="VijithChartDailyCurrYear" width="150" height="20"></canvas>
         </div>
 
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">   
@@ -86,10 +86,10 @@
 </div> <!-- container -->
 
 
-    <?php //for Glenn Yearly chart
+    <?php //for Vijith Yearly chart
                     $outputJobs = array();
                     $outputYears = array();
-                    if ($stmt = $con->prepare($GlennReport)) {
+                    if ($stmt = $con->prepare($VijithReport)) {
                         $stmt->execute();
                         $stmt->bind_result($JobCards, $Year);
                         
@@ -105,7 +105,7 @@
     ?>
 
     <script>
-        var ctx = document.getElementById('GlennChartYearly').getContext('2d');
+        var ctx = document.getElementById('VijithChartYearly').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -133,7 +133,7 @@
 </script>
 
 
-<?php //Glenn Month Chart 
+<?php //Vijith Month Chart 
 
 if ($stmt = $con->prepare($YearMonthChart)) {
     $stmt->execute();
@@ -152,7 +152,7 @@ if ($stmt = $con->prepare($YearMonthChart)) {
                                
 ?>
 <script>
-    var ctx = document.getElementById('GlennChartMonthly').getContext('2d');
+    var ctx = document.getElementById('VijithChartMonthly').getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
@@ -178,7 +178,7 @@ if ($stmt = $con->prepare($YearMonthChart)) {
     });
 </script>
 
-<?php //Glenn daily Chart current year current month
+<?php //Vijith daily Chart current year current month
 
 if ($stmt = $con->prepare($DailyChartCurrMonth)) {
     $stmt->execute();
@@ -197,7 +197,7 @@ if ($stmt = $con->prepare($DailyChartCurrMonth)) {
                                
 ?>
 <script>
-    var ctx = document.getElementById('GlennChartDailyCurrMonth').getContext('2d');
+    var ctx = document.getElementById('VijithChartDailyCurrMonth').getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
@@ -222,7 +222,7 @@ if ($stmt = $con->prepare($DailyChartCurrMonth)) {
     }}
     });
 </script>
-<?php //Glenn daily Chart current year all months
+<?php //Vijith daily Chart current year all months
 
 if ($stmt = $con->prepare($DailyChartCurrYear)) {
     $stmt->execute();
@@ -241,7 +241,7 @@ if ($stmt = $con->prepare($DailyChartCurrYear)) {
                                
 ?>
 <script>
-    var ctx = document.getElementById('GlennChartDailyCurrYear').getContext('2d');
+    var ctx = document.getElementById('VijithChartDailyCurrYear').getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',

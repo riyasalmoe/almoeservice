@@ -34,18 +34,34 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-2">
 
     </div>
-    <div class="col-lg-4">
-        <a href="./printerjobcard.php" class="btn btn-sq-splg btn-primary">
+    <div class="col-lg-8">
+<!--         <a href="./printerjobcard.php" class="btn btn-sq-splg btn-primary">
                 <i class="fa fa-address-card fa-5x"></i><br/>
                     Printer Job Card
                 <br>
                 <br>
+        </a> -->
+        <a href="./itjobsummary.php" class="btn btn-sq-splg btn-primary">
+                <i class="fa fa-address-card fa-5x"></i><br/>
+                    IT Jobs Summary
+        </a>
+        <a href="./geo.php" class="btn btn-sq-splg btn-primary">
+                <i class="fa fa-address-card fa-5x"></i><br/>
+                    Engineer : Geo
+        </a>
+        <a href="./vijith.php" class="btn btn-sq-splg btn-primary">
+                <i class="fa fa-address-card fa-5x"></i><br/>
+                    Engineer : Vijith
+        </a>
+        <a href="./glenn.php" class="btn btn-sq-splg btn-primary">
+                <i class="fa fa-address-card fa-5x"></i><br/>
+                    Engineer : Glenn
         </a>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-2">
 
     </d>
   </div>

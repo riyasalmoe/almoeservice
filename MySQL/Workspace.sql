@@ -16,6 +16,13 @@ select * from view_all_jobcards_geo_daily_curryear;
 select * from view_all_jobcards_glenn_monthyear;
 select * from view_all_jobcards_glenn_daily_currentmonth;
 select * from view_all_jobcards_glenn_daily_curryear;
+select * from view_yearly_jobcards_all;
+select * from view_all_jobcards_daily_currentmonth;
+select * from view_all_jobcards_daily_curryear;
+select * from view_yearly_jobcards_vijith;
+select * from view_all_jobcards_vijith_monthyear;
+select * from view_all_jobcards_vijith_daily_currentmonth;
+select * from view_all_jobcards_vijith_daily_curryear;
 
 --select DOCNO+1 from view_all_docnums;
 
