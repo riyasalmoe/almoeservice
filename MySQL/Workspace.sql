@@ -23,11 +23,12 @@ select * from view_yearly_jobcards_vijith;
 select * from view_all_jobcards_vijith_monthyear;
 select * from view_all_jobcards_vijith_daily_currentmonth;
 select * from view_all_jobcards_vijith_daily_curryear;
+select * from coverplusreg;
 
---select DOCNO+1 from view_all_docnums;
+-- select DOCNO+1 from view_all_docnums;
 
 -- delete from dailyservicereport;
 --  delete from dailyservicereport where `client name` = "Lunch";
+-- delete from coverplusreg;
 
-
-  
+  select count(*) from dailyservicereport;

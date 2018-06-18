@@ -1,6 +1,7 @@
 <?php
 function dbConn() {
         $servername = "192.168.0.85";
+        //$servername = "localhost";
         $username = "root";
         $password = '$$almoe$$';
         $dbname = "almoeservice";

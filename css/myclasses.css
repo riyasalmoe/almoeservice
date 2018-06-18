@@ -35,3 +35,8 @@
     color: red;
     font-size: 16px;
 }
+.toast-top-center {
+  top: 12px;
+  margin: 0 auto;
+  left: 50%;
+  }
