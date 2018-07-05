@@ -22,8 +22,9 @@ select * from view_all_jobcards_daily_curryear;
 select * from view_yearly_jobcards_vijith;
 select * from view_all_jobcards_vijith_monthyear;
 select * from view_all_jobcards_vijith_daily_currentmonth;
-select * from view_all_jobcards_vijith_daily_curryear;
+select * from almoeservice.view_all_jobcards_vijith_daily_curryear;
 select * from coverplusreg;
+select * from almoeservice.view_all_coverplus_endusers;
 
 -- select DOCNO+1 from view_all_docnums;
 
@@ -32,3 +33,8 @@ select * from coverplusreg;
 -- delete from coverplusreg;
 
   select count(*) from dailyservicereport;
+
+  CALL Query_CoverPlus ('%%','%%','%%','%%','%%','%%','%%','%%');
+select * from coverplusreg;
+CALL Query_CoverPlus('%%','%%','%x%','%%','%%','%%','%%','%%');
+-- CPNO ORDNO ENDUSER MACMODEL SERIALNO SALESMAN INVNO LPONO
