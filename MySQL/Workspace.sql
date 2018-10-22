@@ -34,7 +34,7 @@ select * from almoeservice.view_all_coverplus_endusers;
 
   select count(*) from dailyservicereport;
 
-  CALL Query_CoverPlus ('%%','%%','%%','%%','%%','%%','%%','%%');
+CALL Query_CoverPlus ('%%','%%','%%','%%','%%','%%','%%','%%');
 select * from coverplusreg;
 CALL Query_CoverPlus('%%','%%','%x%','%%','%%','%%','%%','%%');
--- CPNO ORDNO ENDUSER MACMODEL SERIALNO SALESMAN INVNO LPONO
+--CPNO ORDNO ENDUSER MACMODEL SERIALNO SALESMAN INVNO LPONO

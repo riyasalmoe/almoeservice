@@ -4,79 +4,16 @@
 ini_set('display_errors', 'On');
 ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 
-$username = 'TESTUSER1';
-$password = 'TESTUSER1';
-$server = 'LDAP://192.168.40.153:50000'; ///DC=ACME,DC=LOCAL //192.168.40.153 //ADSITRIYZB15UG2
-$domain = '@ACME.LOCAL';
-$port = 389;
- 
-$connection = ldap_connect($server, $port);
- 
-if (!$connection) {
-    exit('Connection failed');
-}
- 
-// Help talking to AD
-ldap_set_option($connection, LDAP_OPT_PROTOCOL_VERSION, 3);
-ldap_set_option($connection, LDAP_OPT_REFERRALS, 0);
- 
-$bind = ldap_bind($connection, $username.$domain, $password);
- 
-if (!$bind) {
-    //exit('Binding failed');
-    print_r('Binding failed');
-}
- 
-// This is where you can do your work
- 
-ldap_close($connection);
-/* // connect to ldap server
-$ldapconn = ldap_connect($ldapserver,$ldapport)
-or die("Could not connect to $ldapserver");
-
-// check if ldap_connect returned a resource value 
-if($ldapconn) 
+$ldap_dn="cn=TESTUSER1,CN=USERS,DC=ACME,DC=LOCAL";
+$ldap_password="TESTUSER1";
+$ldap_con = ldap_connect("ldap://192.168.40.153:50000");
+ldap_set_option($ldap_con,LDAP_OPT_PROTOCOL_VERSION, 3);
+if(ldap_bind($ldap_con,$ldap_dn,$ldap_password)){
+    echo "Bind Successfull";
+}else
 {
-    echo "$ldapconn<br>";
-    var_dump($ldapconn);
-    echo "<br>";
-
-    ldap_set_option($ldapconn, LDAP_OPT_REFERRALS, 0);
-    ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
-    
-    // attempting bind
-    $ldapbind=@ldap_bind($ldapconn, $ldapuser, $ldappassword);
-    if ($ldapbind) {
-            echo("success<br>");
-    } else {
-            echo("fail<br>");
-            echo("$ldapuser<br>");
-            echo("$ldappassword<br>");
-            echo "Ldap connection debug: " . ldap_error($ldapconn);
-            echo "<br>";
-            echo ldap_errno($ldapconn);
-            }
-} */
-
-//if(ldap_bind($ldapconn, $ldapuser, $ldappassword));
-
-list_all_users();
-
-function list_all_users($ldap_connection, $unit = 'accounts')
-{
-	$distinguished_name = "OU=Users,DC=ACME,DC=LOCAL";
-	$filter = "(sAMAccountName=*)";
- 
-	$search = ldap_search($ldap_connection, $distinguished_name, $filter);
-	$total_record = ldap_count_entries($ldap_connection, $search);
-	$returned = ldap_get_entries($ldap_connection, $search);
-	
-	if ($total_record > 0) {
-		print_r($returned);
-	}
+    echo "Invalid user/pass or other errors!";
 }
-
-
 
 echo "<br>";
 echo "<br>";

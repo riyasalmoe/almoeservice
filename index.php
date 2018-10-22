@@ -62,8 +62,6 @@
         </a>
     </div>
     <div class="col-lg-2">
-
-    </d>
   </div>
 </div>
 
