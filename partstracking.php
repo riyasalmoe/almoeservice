@@ -33,6 +33,9 @@
 <hr>
 <hr>
 <div class="container">
+<div class="row">
+  <div class="col text-center tada animated text-secondary"><h2>My Part Requests</h2></div>
+</div>
   <div class="row">
     <div class="col-lg-2">
 
@@ -54,7 +57,7 @@
             <td>
               <ul class="list-unstyled multi-steps">
                 <li class="is-active">Request</li>
-                <li>Approve</li>
+                <li>Approval</li>
                 <li>Order</li>
                 <li>Arrived</li>
                 <li>Release Request</li>
@@ -68,7 +71,7 @@
             <td>
               <ul class="list-unstyled multi-steps">
                 <li>Request</li>
-                <li class="is-active">Approve</li>
+                <li class="is-active">Approval</li>
                 <li>Order</li>
                 <li>Arrived</li>
                 <li>Release Request</li>
@@ -82,7 +85,7 @@
             <td>
               <ul class="list-unstyled multi-steps">
                 <li>Request</li>
-                <li>Approve</li>
+                <li>Approval</li>
                 <li>Order</li>
                 <li class="is-active">Arrived</li>
                 <li>Release Request</li>

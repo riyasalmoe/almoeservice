@@ -109,8 +109,8 @@
               placeholder="End User" autocomplete="off" >
               <div id="endusers" class="list-group"></div>  
               <br>
-              <button type="submit" id="btnFind" name="btnFind" class="btn btn-primary">Find</button>
-              <button type="submit" class="btn btn-success" formnovalidate>Cancel</button> 
+              <!-- <button type="submit" id="btnFind" name="btnFind" class="btn btn-primary">Find</button>
+              <button type="submit" class="btn btn-success" formnovalidate>Cancel</button>  -->
       </div>
 
     </div>

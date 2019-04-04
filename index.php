@@ -32,17 +32,25 @@
 <br>
 <br>
 <br>
+
+<div class="alert">
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-lg-2">
 
+  </div>
+  <div id="AdminRow" class="row d-none">
+
+    <div class="col-lg-2">
+        <!-- nothing here -->
     </div>
     <div class="col-lg-8">
-<!--         <a href="./printerjobcard.php" class="btn btn-sq-splg btn-primary">
-                <i class="fa fa-address-card fa-5x"></i><br/>
-                    Printer Job Card
-                <br>
-                <br>
+        <!--         <a href="./printerjobcard.php" class="btn btn-sq-splg btn-primary">
+        <i class="fa fa-address-card fa-5x"></i><br/>
+            Printer Job Card
+        <br>
+        <br>
         </a> -->
         <a href="./itjobsummary.php" class="btn btn-sq-splg btn-primary">
                 <i class="fa fa-line-chart fa-5x"></i><br/>
@@ -62,7 +70,8 @@
         </a>
     </div>
     <div class="col-lg-2">
-  </div>
+      <!-- nothing here -->
+    </div>
 </div>
 
 </body>
