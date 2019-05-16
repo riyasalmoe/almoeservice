@@ -62,10 +62,23 @@
                     File</label> <input type="file" name="file"
                     id="file" accept=".xls,.xlsx">
                 <button type="submit" id="submit" name="import"
-                    class="btn-submit">Import</button>
+                    class="btn-submit">XL Import</button>
             </div>
         </form>
     </div>
+
+    <div class="outer-container">
+        <form action="" method="post"
+            name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
+            <div>
+                <label>Choose CSV
+                    File</label> <input type="file" name="file"
+                    id="file" accept=".csv">
+                <button type="submit" id="csvsubmit" name="csvimport"
+                    class="btn-submit">CSV Import</button>
+            </div>
+        </form>
+    </div>    
 
     <div id="response" class="<?php if(!empty($type)) { echo $type . " display-block"; } ?>"><?php if(!empty($message)) { echo $message; } ?></div>        
     </div>
@@ -116,28 +129,28 @@ if (isset($_POST["import"]))
                 //     $description = mysqli_real_escape_string($conn,$Row[1]);
                 // }
 
-                echo $Row[0];
-                echo $Row[1];
-                echo $Row[2];
-                echo $Row[3];
-                echo $Row[4];
-                echo $Row[5];
-                echo $Row[6];
-                echo $Row[7];
-                echo $Row[8];
-                echo $Row[9];
-                echo $Row[10];
-                echo $Row[11];
-                echo $Row[12];
-                echo $Row[13];
-                echo $Row[14];
-                echo $Row[15];
-                echo $Row[16];
-                echo $Row[17];
-                echo $Row[18];
-                echo $Row[19];
-                echo $Row[20];
-                echo $Row[21];
+                
+                // // echo $Row[1];
+                // // echo $Row[2];
+                // // echo $Row[3];
+                // // echo $Row[4];
+                // // echo $Row[5];
+                // // echo $Row[6];
+                // // echo $Row[7];
+                //echo $Row[8];
+                //echo $Row[9];
+                // // echo $Row[10];
+                // // echo $Row[11];
+                // // echo $Row[12];
+                //echo $Row[13];
+                //echo $Row[14];
+                // echo $Row[15];
+                // echo $Row[16];
+                // echo $Row[17];
+                // echo $Row[18];
+                // echo $Row[19];
+                // echo $Row[20];
+                // echo $Row[21];
                 echo '<br>';
                 
                 // if (!empty($name) || !empty($description)) {
@@ -162,6 +175,100 @@ if (isset($_POST["import"]))
         $message = "Invalid File Type. Upload Excel File.";
   }
 }
+
+if (isset($_POST["csvimport"]))
+{
+       
+  $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+  
+  if(in_array($_FILES["file"]["type"],$allowedFileType)){
+
+        $targetPath = 'uploads/'.$_FILES['file']['name'];
+        move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+        
+        $Reader = new SpreadsheetReader($targetPath);
+        
+        $sheetCount = count($Reader->sheets());
+        
+        for($i=0;$i<$sheetCount;$i++)
+        {
+            $Reader->ChangeSheet($i);
+            
+            $firstRow = true;
+
+            foreach ($Reader as $Row)
+            {
+                if($firstRow){
+                    $firstRow = false;
+                    continue;}
+                // $name = "";
+                // if(isset($Row[0])) {
+                //     $name = mysqli_real_escape_string($conn,$Row[0]);
+                // }
+                
+                // $description = "";
+                // if(isset($Row[1])) {
+                //     $description = mysqli_real_escape_string($conn,$Row[1]);
+                // }
+                //echo clean("'" . trim($Row[0]) . "','" . trim($Row[1]) . "'," . trim($Row[2]) . ",'" . trim($Row[3]) . "','" . trim($Row[4]) . "','" . trim($Row[5]) . "','" . trim($Row[6]) . "','" . trim($Row[7]) . "','" . trim($Row[10]) . "','" . trim($Row[11]) . "','" . trim($Row[12]) . "'");
+                echo clean("'" . trim($Row[0]) . "','" . DateTime::createFromFormat('d-M-y', trim($Row[1]))->format('Y-m-d')  . "'," . trim($Row[2]) . ",'" . trim($Row[3]) . "','" . trim($Row[4]) . "','" . trim($Row[5]) . "','" . trim($Row[6]) . "','" . trim($Row[7]) . "','" . trim($Row[10]) . "','" . trim($Row[11]) . "','" . trim($Row[12]) . "'");
+                // // echo $Row[0];
+                // // echo $Row[1];
+                // // echo $Row[2];
+                // // echo $Row[3];
+                // // echo $Row[4];
+                // // echo $Row[5];
+                // // echo $Row[6];
+                // // echo $Row[7];
+                //echo $Row[8];
+                //echo $Row[9];
+                // // echo $Row[10];
+                // // echo $Row[11];
+                // // echo $Row[12];
+                //echo $Row[13];
+                //echo $Row[14];
+                // echo $Row[15];
+                // echo $Row[16];
+                // echo $Row[17];
+                // echo $Row[18];
+                // echo $Row[19];
+                // echo $Row[20];
+                // echo $Row[21];
+                echo '<br>';
+                
+                // if (!empty($name) || !empty($description)) {
+                //     //$query = "insert into tbl_info(name,description) values('".$name."','".$description."')";
+                //     //$result = mysqli_query($conn, $query);
+                
+                //     if (! empty($result)) {
+                //         $type = "success";
+                //         $message = "Excel Data Imported into the Database";
+                //     } else {
+                //         $type = "error";
+                //         $message = "Problem in Importing Excel Data";
+                //     }
+                // }
+             }
+        
+         }
+  }
+  else
+  { 
+        $type = "error";
+        $message = "Invalid File Type. Upload Excel File.";
+  }
+}
+
+
+//========================================================================================
+function clean($string) {
+    //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+    $string = preg_replace('/[^A-Za-z0-9\-\'\,]/', '', $string); // Removes special chars.
+ 
+    //return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+    return $string;
+ }
+ //========================================================================================
 ?>
 
 
